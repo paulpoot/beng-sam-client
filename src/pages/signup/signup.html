@@ -30,18 +30,6 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" name="username" ngModel required #username="ngModel"
-                  [class.invalid]="username.errors && username.dirty"></ion-input>
-      </ion-item>
-      <ion-item class="error-message" *ngIf="username.errors?.required && username.dirty">
-        Username is required
-      </ion-item>
-      <ion-item class="error-message" *ngIf="username.errors?.usernameTaken">
-        Username already taken
-      </ion-item>
-
-      <ion-item>
         <ion-label floating>Password</ion-label>
         <ion-input type="password" name="password" ngModel required #password="ngModel"
                   [class.invalid]="password.errors && password.dirty"></ion-input>

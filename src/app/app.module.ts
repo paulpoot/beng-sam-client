@@ -3,13 +3,13 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { CustomFormsModule } from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
+import { AuthInterceptor } from '../providers/auth/auth-interceptor';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ChatPage } from '../pages/chat/chat';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
@@ -19,7 +19,6 @@ import { AuthProvider } from '../providers/auth/auth';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ChatPage,
     LoginPage,
     SignupPage,
@@ -41,7 +40,6 @@ import { AuthProvider } from '../providers/auth/auth';
   bootstrap: [IonicApp],
   entryComponents: [
     ChatPage,
-    HomePage,
     LoginPage,
     SignupPage,
   ],
@@ -50,7 +48,12 @@ import { AuthProvider } from '../providers/auth/auth';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MessageProvider,
-    AuthProvider
+    AuthProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class AppModule {}

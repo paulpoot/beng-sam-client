@@ -6,17 +6,36 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Chat</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Sam</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <div ion-item *ngFor="let message of messages">
-      {{ message.content }}
+    <div *ngFor="let message of messages" class="chat-list">
+      <div *ngIf="message.user_id == 'sam'" class="chat-bubble--partner">
+        {{ message.content }}
+      </div>
+      <div *ngIf="message.user_id != 'sam'" class="chat-bubble--mine">
+        {{ message.content }}
+      </div>
     </div>  
-  </ion-list>
 </ion-content>
+
+
+<ion-footer no-border>
+    <form #form="ngForm" (ngSubmit)="submit(form.value); form.reset()" novalidate>   
+        <ion-toolbar color="primary">
+          <ion-input class="message-input" type="text" name="message" ngModel required #message="ngModel"
+              [class.invalid]="message.errors && message.dirty"></ion-input>
+
+          <ion-buttons end>
+              <button ion-button icon-only type="submit">
+                <ion-icon name="send"></ion-icon>
+              </button>
+          </ion-buttons>
+        </ion-toolbar>
+    </form>
+</ion-footer>

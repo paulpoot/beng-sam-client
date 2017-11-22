@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { apiUrl } from '../../../secret';
+import { Storage } from "@ionic/storage";
 
 /*
   Generated class for the Message provider.
@@ -10,18 +11,29 @@ import { apiUrl } from '../../../secret';
 */
 @Injectable()
 export class MessageProvider {
+  
 
-  constructor(public http: HttpClient) {
-    console.log('Hello MessageProvider');
-  }
+  constructor(public httpClient: HttpClient) {}
 
   load() {
     return new Promise(resolve => {
-      this.http.get( apiUrl + 'message')
+      this.httpClient.get( apiUrl + 'conversation')
         .subscribe(data => {
           resolve(data);
         });
     });
+  }
+
+  submit(message) {
+    let body = new URLSearchParams();
+    body.set('content', message);
+
+    return new Promise(resolve => {
+      this.httpClient.post( apiUrl + 'message', body.toString())
+        .subscribe(data => {
+          resolve(data);
+        })
+    })
   }
 
 }

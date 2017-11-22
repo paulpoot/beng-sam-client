@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {HomePage} from '../pages/home/home';
-import {LoginPage} from "../pages/login/login";
-import {AuthProvider} from "../providers/auth/auth";
+import { LoginPage } from "../pages/login/login";
+import { AuthProvider } from "../providers/auth/auth";
 
 import { ChatPage } from '../pages/chat/chat';
 
@@ -27,7 +26,7 @@ export class MyApp {
 
     authProvider.authUser.subscribe(jwt => {
       if (jwt) {
-        this.rootPage = HomePage;
+        this.rootPage = ChatPage;
       }
       else {
         this.rootPage = LoginPage;
