@@ -30,7 +30,7 @@ export class ChatPage {
     
     this.loadMessages();
 
-    Observable.interval(500000).subscribe(x => {
+    Observable.interval(3000).subscribe(x => {
       this.loadMessages();
     });
   }
