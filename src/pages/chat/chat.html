@@ -15,10 +15,9 @@
 
 <ion-content padding>
     <div *ngFor="let message of messages" class="chat-list">
-      <div *ngIf="message.user_id == 'sam'" class="chat-bubble--partner">
-        {{ message.content }}
-      </div>
-      <div *ngIf="message.user_id != 'sam'" class="chat-bubble--mine">
+      <div class="chat-bubble chat-bubble--{{ message.user_id }}" (press)="pressMessage(message)">
+        <img *ngIf="message.image" src="{{ message.image }}" />
+        
         {{ message.content }}
       </div>
     </div>  

@@ -1,22 +1,16 @@
 page-chat {
     .chat-bubble {
         padding: 16px;
-        margin: 16px 0;
+        margin: 16px 0 16px 32px;
+        background-color: color($colors, secondaryLighter);        
         border-radius: 10px;
     }
 
-    .chat-bubble--partner {
+    .chat-bubble--sam {
         @extend .chat-bubble;
         margin-right: 32px;
         margin-left: 0;
         background-color: #eee;
-    }
-
-    .chat-bubble--mine {
-        @extend .chat-bubble;
-        margin-right: 0;
-        margin-left: 32px;
-        background-color: color($colors, secondaryLighter);
     }
 
     .message-input {
