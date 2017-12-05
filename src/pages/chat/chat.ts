@@ -4,6 +4,9 @@ import { MessageProvider } from '../../providers/message-provider/message-provid
 import { Observable } from 'rxjs/Rx';
 import { apiUrl } from "../../../secret";
 import { HttpClient } from "@angular/common/http";
+import { AuthProvider } from "../../providers/auth/auth";
+import { LoginPage } from "../login/login";
+
 
 /**
  * Generated class for the ChatPage page.
@@ -27,7 +30,8 @@ export class ChatPage {
               public navCtrl: NavController, 
               public navParams: NavParams,
               private readonly httpClient: HttpClient,
-              public messageProvider: MessageProvider) {
+              public messageProvider: MessageProvider,
+              private readonly authProvider: AuthProvider) {
     
     this.loadMessages();
 
@@ -68,6 +72,11 @@ export class ChatPage {
       this.loadMessages();
       this.message = null;
     })
+  }
+
+  logout() {
+    this.authProvider.logout();
+    this.navCtrl.push(LoginPage);    
   }
 
   ionViewWillEnter() {
