@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { CustomFormsModule } from 'ng2-validation';
 import { Storage, IonicStorageModule } from "@ionic/storage";
-import { AuthInterceptor } from '../providers/auth/auth-interceptor';
+import { Interceptor } from '../providers/interceptor/interceptor';
 
 import { MyApp } from './app.component';
 import { ChatPage } from '../pages/chat/chat';
@@ -51,7 +51,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AuthProvider,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: Interceptor,
       multi: true
     }
   ]
