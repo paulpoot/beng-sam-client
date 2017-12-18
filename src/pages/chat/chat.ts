@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { MessageProvider } from '../../providers/message-provider/message-provider';
 import { Observable } from 'rxjs/Rx';
 import { apiUrl } from "../../../secret";
@@ -21,9 +21,11 @@ import { LoginPage } from "../login/login";
     providers: [MessageProvider]
 })
 export class ChatPage {
+    @ViewChild(Content) content: any;
     public messages: any;
     public urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
     message: string;
+    lastMessage: any;
 
     constructor(public platform: Platform,
             public navCtrl: NavController, 
@@ -43,7 +45,7 @@ export class ChatPage {
         this.messageProvider.load()
         .then(data => {
             this.messages = data;
-
+            this.lastMessage = this.messages[this.messages.length -1];
             var self = this;
             this.messages.forEach(function(item, index) {
                 if(item.type == 'link') {
@@ -54,6 +56,8 @@ export class ChatPage {
                     }
                 }
             });
+
+            this.scrollDown();
         });
     }
 
@@ -70,6 +74,8 @@ export class ChatPage {
         .then(data => {
             this.loadMessages();
             this.message = null;
+            this.messages.push({ content: values.message });
+            this.scrollDown();
         })
     }
 
@@ -83,5 +89,11 @@ export class ChatPage {
             text => this.message = text,
             err => console.log(err)
         );
+    }
+
+    scrollDown() {
+        setTimeout(() => {
+            document.getElementById('scrollTo').scrollIntoView(false)
+        }, 1000);
     }
 }

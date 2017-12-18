@@ -24,7 +24,7 @@ export class MessageProvider {
                 var headers;
                 if(this.firstLoad) {
                     this.firstLoad = false;
-                } else {
+                } else if(data) {
                     headers = new HttpHeaders().set('If-Modified-Since', data)            
                 }
 

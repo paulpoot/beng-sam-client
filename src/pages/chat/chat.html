@@ -20,19 +20,21 @@
 
 
 <ion-content padding>
-    <div class="chat-list" #content>
-      <div *ngFor="let message of messages" class="chat-bubble chat-bubble--{{ message.user_id }}" (press)="pressMessage(message)">
+      <div *ngFor="let message of messages" 
+            class="chat-bubble chat-bubble--{{ message.user_id }}" 
+            id="{{ message._id }}"
+            (press)="pressMessage(message)">
         <img *ngIf="message.image" src="{{ message.image }}" />
         
         {{ message.content }}
       </div>
-    </div>  
+      <div id="scrollTo"></div>
 </ion-content>
 
 
 <ion-footer no-border>
     <form #form="ngForm" (ngSubmit)="submit(form.value); form.reset()" novalidate>   
-        <ion-toolbar color="primary">
+        <ion-toolbar color="primary" id="toolbaar">
           <ion-input class="message-input" type="text" name="message" ngModel required #message="ngModel"
               [class.invalid]="message.errors && message.dirty"></ion-input>
 
