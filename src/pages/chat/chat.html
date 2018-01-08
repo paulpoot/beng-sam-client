@@ -6,41 +6,46 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Sam</ion-title>
+    <ion-navbar color="primary">
+        <ion-title>Sam</ion-title>
     
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logout()">
-        <ion-icon name="contact"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="archive"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="logout()">
+                <ion-icon name="contact"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-      <div *ngFor="let message of messages" 
-            class="chat-bubble chat-bubble--{{ message.user_id }}" 
-            id="{{ message._id }}"
-            (press)="pressMessage(message)">
-        <img *ngIf="message.image" src="{{ message.image }}" />
-        
-        {{ message.content }}
-      </div>
-      <div id="scrollTo"></div>
+<ion-content padding class="chat-background">
+    <div *ngFor="let message of messages" class="chat-row chat-row--{{ message.user_id }}">
+        <div class="chat-bubble" 
+                id="{{ message._id }}"
+                (press)="pressMessage(message)">
+            <img *ngIf="message.image" src="{{ message.image }}" />
+          
+            {{ message.content }}
+        </div>
+    </div>
+            
+    <div id="scrollTo"></div>
 </ion-content>
 
 
-<ion-footer no-border>
+<ion-footer>
     <form #form="ngForm" (ngSubmit)="submit(form.value); form.reset()" novalidate>   
-        <ion-toolbar color="primary" id="toolbaar">
-          <ion-input class="message-input" type="text" name="message" ngModel required #message="ngModel"
+        <ion-toolbar color="secondary" id="toolbar">
+          <ion-input class="message-input" type="text" name="message" placeholder="Typ bericht..." ngModel required #message="ngModel"
               [class.invalid]="message.errors && message.dirty"></ion-input>
 
           <ion-buttons end>
-              <button ion-button icon-only type="submit">
-                <ion-icon name="send"></ion-icon>
+              <button ion-button icon-only type="submit" class="send-button">
+                 <ion-icon name="send" color="primaryLighter"></ion-icon>
               </button>
           </ion-buttons>
         </ion-toolbar>

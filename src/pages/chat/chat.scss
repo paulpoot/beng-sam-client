@@ -1,26 +1,70 @@
 page-chat {
-    .chat-bubble {
-        padding: 16px;
-        margin: 16px 0 16px 32px;
-        background-color: color($colors, secondaryLighter);        
-        border-radius: 10px;
+    .chat-background {
+        background-color: color($colors, secondary);
     }
 
-    .chat-bubble--sam {
-        @extend .chat-bubble;
-        margin-right: 32px;
-        margin-left: 0;
-        background-color: #eee;
+    .chat-row {
+        display: flex;
+        width: calc(100% - 48px);
+        margin: 24px 24px 24px;
+        justify-content: right;
+
+        .chat-bubble {
+            position: relative;
+            display: table;
+            max-width: 75%;
+            padding: 16px;
+            background-color: color($colors, accent);
+            color: #fff;
+
+            &:before {
+                content: "";
+                position: absolute;
+                border-style: solid;
+                display: block;
+                width: 0;
+                top: auto;
+                bottom: 10px;
+                right: -6px;
+                border-width: 5px 0 5px 6px;
+                border-color: transparent color($colors, accent);
+            }
+        }
+    }
+
+    .chat-row--sam {
+        justify-content: left;
+
+        .chat-bubble {
+            background-color: color($colors, primary);
+
+            &:before {
+                content: "";
+                position: absolute;
+                border-style: solid;
+                display: block;
+                width: 0;
+                top: auto;
+                bottom: 10px;
+                left: -6px;
+                border-width: 5px 6px 5px 0;
+                border-color: transparent color($colors, primary);
+            }
+        }
     }
 
     .message-input {
         width: 90%;
+        float: right;
         margin: 0 auto;
-        background-color: #fff;
-        border-radius: 10px;
 
         input {
             margin: 8px;
         }
+    }
+
+    .send-button {
+        margin-right: 5vw !important;
+        margin-left: 5vw !important;
     }
 }
