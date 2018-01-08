@@ -5,9 +5,9 @@ page-chat {
 
     .chat-row {
         display: flex;
-        width: calc(100% - 48px);
-        margin: 24px 24px 24px;
-        justify-content: right;
+        width: 100%;
+        margin: 24px 0 24px;
+        justify-content: flex-end;
 
         .chat-bubble {
             position: relative;
@@ -33,7 +33,7 @@ page-chat {
     }
 
     .chat-row--sam {
-        justify-content: left;
+        justify-content: flex-start;
 
         .chat-bubble {
             background-color: color($colors, primary);
