@@ -53,7 +53,7 @@ page-profile {
         }
 
         progress[value]::-webkit-progress-value {
-            background-color: color($colors, primary);
+            background-color: color($colors, accent);
         }
     }
 

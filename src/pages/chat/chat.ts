@@ -75,7 +75,11 @@ export class ChatPage {
         .then(data => {
             this.loadMessages();
             this.message = null;
-            this.messages.push({ content: values.message });
+
+            if(this.messages) {
+                this.messages.push({ content: values.message });
+            }
+
             this.scrollDown();
         })
     }

@@ -8,6 +8,12 @@
 
   <ion-navbar color="primary">
     <ion-title>Profiel</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+          <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -41,33 +47,51 @@
 
     <h2>Gegevens</h2>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-8>
-          <ion-item>
-            <ion-label stacked>Naam</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col col-4>
-          <ion-item>
-            <ion-label stacked>Leeftijd</ion-label>
-            <ion-input type="number" step="1" min="0"></ion-input>    
-          </ion-item>
-        </ion-col>
-      </ion-row>
+    <form #form="ngForm" (ngSubmit)="saveProfile(form.value)" novalidate *ngIf="profile">
 
-      <ion-item>
-        <ion-label stacked>E-mail</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-8>
+            <ion-item>
+              <ion-label stacked>Naam</ion-label>
+              <ion-input type="text" name="name" [(ngModel)]="profile.name" required #name="ngModel"
+              [class.invalid]="name.errors && name.dirty"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-4>
+            <ion-item>
+              <ion-label stacked>Leeftijd</ion-label>
+              <ion-input type="number" name="age" [(ngModel)]="profile.age" required #age="ngModel"
+              [class.invalid]="age.errors && age.dirty" step="1" min="0"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+  
+        <ion-item>
+          <ion-label stacked>E-mail</ion-label>
+          <ion-input type="email" name="email" [(ngModel)]="profile.email" required #email="ngModel"
+          [class.invalid]="email.errors && email.dirty"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label stacked>Wachtwoord</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label stacked>Nieuw wachtwoord</ion-label>
+          <ion-input type="password" name="newPassword" [(ngModel)]="profile.newPassword" placeholder="••••••••" #newPassword="ngModel"
+          [class.invalid]="newPassword.errors && newPassword.dirty"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Bevestig huidig wachtwoord</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="profile.password" required placeholder="••••••••" #password="ngModel"
+          [class.invalid]="password.errors && password.dirty"></ion-input>
+        </ion-item>
+  
+      </ion-grid>
 
-    </ion-grid>
+      <div padding>
+        <button ion-button color="accent" block type="submit" [disabled]="!form.valid">Opslaan</button>
+      </div>
+
+    </form>
 
   </div>
 
