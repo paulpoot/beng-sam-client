@@ -4,8 +4,6 @@ import { MessageProvider } from '../../providers/message-provider/message-provid
 import { Observable } from 'rxjs/Rx';
 import { apiUrl } from "../../../secret";
 import { HttpClient } from "@angular/common/http";
-import { AuthProvider } from "../../providers/auth/auth";
-import { LoginPage } from "../login/login";
 import { ProfilePage } from "../profile/profile";
 
 /**
@@ -25,15 +23,16 @@ export class ChatPage {
     @ViewChild(Content) content: any;
     public messages: any;
     public urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
-    message: string;
-    lastMessage: any;
+    public message: string;
+    public lastMessage: any;
+    public isTyping: boolean = false;
+    public firstLoad: boolean = true;
 
     constructor(public platform: Platform,
             public navCtrl: NavController, 
             public navParams: NavParams,
             private readonly httpClient: HttpClient,
-            public messageProvider: MessageProvider,
-            private readonly authProvider: AuthProvider) {
+            public messageProvider: MessageProvider) {
     
         this.loadMessages();
 
@@ -45,20 +44,29 @@ export class ChatPage {
     loadMessages() {
         this.messageProvider.load()
         .then(data => {
-            this.messages = data;
-            this.lastMessage = this.messages[this.messages.length -1];
-            var self = this;
-            this.messages.forEach(function(item, index) {
-                if(item.type == 'link') {
-                    if(item.content.indexOf('https://www.youtube.com/watch?v=') !== -1) {
-                        item.link = item.content.match(self.urlRegex)[0];
-                        var videoId = item.link.split('v=')[1];
-                        item.image = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
-                    }
-                }
-            });
+            if(!this.firstLoad && data[data['length'] - 1].user_id === 'sam') {
+                this.isTyping = true;
+            }
 
-            this.scrollDown();
+            this.firstLoad = false;
+
+            Observable.timer(1500).subscribe(x => {
+                this.isTyping = false;
+                this.messages = data;
+                this.lastMessage = this.messages[this.messages.length -1];
+                var self = this;
+                this.messages.forEach(function(item, index) {
+                    if(item.type == 'link') {
+                        if(item.content.indexOf('https://www.youtube.com/watch?v=') !== -1) {
+                            item.link = item.content.match(self.urlRegex)[0];
+                            var videoId = item.link.split('v=')[1];
+                            item.image = 'https://img.youtube.com/vi/' + videoId + '/0.jpg';
+                        }
+                    }
+                });
+    
+                this.scrollDown();
+            });
         });
     }
 

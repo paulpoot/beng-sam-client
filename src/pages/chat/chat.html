@@ -7,8 +7,9 @@
 <ion-header>
 
     <ion-navbar color="primary">
-        <ion-title>Sam</ion-title>
-    
+        <ion-title [class.small]="isTyping">Sam</ion-title>
+        <p class="typing-message" [class.show]="isTyping">Aan het typen...</p>
+
         <ion-buttons end>
             <button ion-button icon-only>
                 <ion-icon name="archive"></ion-icon>
@@ -32,7 +33,7 @@
             {{ message.content }}
         </div>
     </div>
-            
+        
     <div id="scrollTo"></div>
 </ion-content>
 

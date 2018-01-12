@@ -3,6 +3,7 @@ import { RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { apiUrl } from '../../../secret';
 import { Storage } from "@ionic/storage";
+import { HttpErrorResponse } from '@angular/common/http/src/response';
 
 /*
   Generated class for the Message provider.
@@ -35,7 +36,11 @@ export class MessageProvider {
                     .subscribe(response => {
                         this.setConversationLastModified(response.headers.get('Last-Modified'));
                         resolve(response.body);
-                    });
+                    }, (err: HttpErrorResponse) => {
+                        if(err.status != 304) {
+                            console.log(err);
+                        }
+                    })
             })
 
         });

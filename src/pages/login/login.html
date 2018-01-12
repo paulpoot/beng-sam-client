@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Login</ion-title>
+    <ion-title>Inloggen</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,29 +9,29 @@
   <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
     <ion-list>
       <ion-item>
-        <ion-label floating>Email</ion-label>
+        <ion-label floating>E-mailadres</ion-label>
         <ion-input type="text" name="email" ngModel required #email="ngModel"
                    [class.invalid]="email.errors && email.dirty"></ion-input>
       </ion-item>
       <ion-item class="error-message" *ngIf="email.errors?.required && email.dirty">
-        Email is required
+        E-mailadres is vereist
       </ion-item>
 
       <ion-item>
-        <ion-label floating>Password</ion-label>
+        <ion-label floating>Wachtwoord</ion-label>
         <ion-input type="password" name="password" ngModel required #password="ngModel"
                    [class.invalid]="password.errors && password.dirty"></ion-input>
       </ion-item>
       <ion-item class="error-message" *ngIf="password.errors?.required && password.dirty">
-        Password is required
+        Wachtwoord is vereist
       </ion-item>
 
       <div padding>
-        <button ion-button color="accent" block type="submit" [disabled]="!form.valid">Login</button>
+        <button ion-button color="accent" block type="submit" [disabled]="!form.valid">Inloggen</button>
       </div>
 
       <div padding>
-        <button ion-button color="secondary" block type="button" (click)="signup()">Sign up</button>
+        <button ion-button color="secondary" block type="button" (click)="signup()">Registreren</button>
       </div>
     </ion-list>
   </form>

@@ -21,7 +21,7 @@ export class SignupPage {
   signup(value: any) {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Signing up ...'
+      content: 'Account aanmaken...'
     });
 
     loading.present();
@@ -37,7 +37,7 @@ export class SignupPage {
   private showSuccesToast(jwt) {
     if (jwt !== 'EXISTS') {
       const toast = this.toastCtrl.create({
-        message: 'Sign up successful',
+        message: 'Registreren voltooid!',
         duration: 3000,
         position: 'bottom'
       });
@@ -46,7 +46,7 @@ export class SignupPage {
     }
     else {
       const toast = this.toastCtrl.create({
-        message: 'Username already registered',
+        message: 'E-mailadres is al in gebruik.',
         duration: 3000,
         position: 'bottom'
       });
@@ -58,7 +58,7 @@ export class SignupPage {
   }
 
   handleError(error: any) {
-    let message = `Unexpected error occurred`;
+    let message = `Er is een onverwachte fout opgetreden: ${error.statusText}`;
 
     const toast = this.toastCtrl.create({
       message,

@@ -23,7 +23,7 @@ export class LoginPage {
   login(value: any) {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Logging in ...'
+      content: 'Inloggen...'
     });
 
     loading.present();
@@ -39,10 +39,10 @@ export class LoginPage {
   handleError(error: any) {
     let message: string;
     if (error.status && error.status === 401) {
-      message = 'Login failed';
+      message = 'Inloggen mislukt';
     }
     else {
-      message = `Unexpected error: ${error.statusText}`;
+      message = `Er is een onverwachte fout opgetreden: ${error.statusText}`;
     }
 
     const toast = this.toastCtrl.create({

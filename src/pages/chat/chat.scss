@@ -1,4 +1,28 @@
 page-chat {
+    .title {
+        transition: transform .2s ease-in-out;
+        transform-origin: left center;
+        
+        &.small {
+            transform: scale(.75);
+        }
+    }
+
+    .typing-message {
+        display: none;
+        margin: 0 0 0 10px;
+        color: color($colors, secondary);
+        font-size: 1rem;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+        transition-delay: 1s;
+
+        &.show {
+            display: initial;
+            opacity: 1;
+        }
+    }
+
     .chat-background {
         background-color: color($colors, secondary);
     }
