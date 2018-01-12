@@ -6,6 +6,7 @@ import { apiUrl } from "../../../secret";
 import { HttpClient } from "@angular/common/http";
 import { AuthProvider } from "../../providers/auth/auth";
 import { LoginPage } from "../login/login";
+import { ProfilePage } from "../profile/profile";
 
 /**
  * Generated class for the ChatPage page.
@@ -79,9 +80,8 @@ export class ChatPage {
         })
     }
 
-    logout() {
-        this.authProvider.logout();
-        this.navCtrl.push(LoginPage);    
+    openProfile() {
+        this.navCtrl.push(ProfilePage);    
     }
 
     ionViewWillEnter() {

@@ -1,0 +1,82 @@
+page-profile {
+    .scroll-content {
+        background-color: color($colors, secondaryDarker);
+    }
+
+    .stats {
+        background-color: color($colors, secondary);
+
+        .name {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .message-stats {
+            text-align: center;
+
+            span {
+                font-weight: 700;
+                font-size: 2rem;
+            }
+
+            h3 {
+                margin-top: .5rem;
+                font-size: 1.5rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: .1rem;
+                opacity: .7;
+            }
+        }
+
+        .level {
+            display: block;
+            font-size: 2rem;
+            letter-spacing: .1rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        progress {
+            margin: 1rem 10%;
+            display: block;
+            width: 80%;
+            height: 8px;
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        progress[value]::-webkit-progress-bar {
+            background-color: color($colors, light);
+        }
+
+        progress[value]::-webkit-progress-value {
+            background-color: color($colors, primary);
+        }
+    }
+
+    .form {
+        h2 {
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+        }
+
+        .item {
+            background-color: color($colors, secondaryDarker);
+        }
+
+        ion-col,
+        ion-item {
+            padding: 0;
+        }
+
+        ion-col:nth-child(2) ion-item {
+            padding-left: 16px;
+        }
+    }
+
+}

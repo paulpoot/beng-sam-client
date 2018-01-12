@@ -1,0 +1,74 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Profiel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <div class="stats" padding *ngIf="profile">
+
+    <h1 class="name">{{ profile.name }}</h1>
+
+    <ion-grid>
+      <ion-row class="message-stats">
+        <ion-col col-6>
+          <span>{{ profile.messagesSent }}</span>
+          <h3>Berichten verstuurd</h3>
+        </ion-col>
+        <ion-col col-6>
+          <span>{{ profile.messagesReceived }}</span>
+          <h3>Berichten ontvangen</h3>    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <span class="level">Level {{ profile.level }}</span>
+    <progress max="1000" value="{{ profile.experienceForNextLevel }}"></progress>
+
+  </div>
+
+  <div class="form" padding>
+
+    <h2>Gegevens</h2>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <ion-item>
+            <ion-label stacked>Naam</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-4>
+          <ion-item>
+            <ion-label stacked>Leeftijd</ion-label>
+            <ion-input type="number" step="1" min="0"></ion-input>    
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Wachtwoord</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+    </ion-grid>
+
+  </div>
+
+</ion-content>

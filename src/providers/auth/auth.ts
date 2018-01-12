@@ -59,6 +59,7 @@ export class AuthProvider {
   signup(values: any): Observable<any> {
     let body = new URLSearchParams();
     body.set('name', values.name);
+    body.set('age', values.age);
     body.set('email', values.email);
     body.set('password', values.password);
 

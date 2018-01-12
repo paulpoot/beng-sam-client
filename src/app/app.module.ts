@@ -13,8 +13,11 @@ import { MyApp } from './app.component';
 import { ChatPage } from '../pages/chat/chat';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
-import { MessageProvider } from '../providers/message-provider/message-provider';
+import { ProfilePage } from '../pages/profile/profile';
+import { ArchivePage } from '../pages/archive/archive';
 import { AuthProvider } from '../providers/auth/auth';
+import { MessageProvider } from '../providers/message-provider/message-provider';
+import { ProfileProvider } from '../providers/profile-provider/profile-provider';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { AuthProvider } from '../providers/auth/auth';
     ChatPage,
     LoginPage,
     SignupPage,
+    ProfilePage,
+    ArchivePage
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,8 @@ import { AuthProvider } from '../providers/auth/auth';
     ChatPage,
     LoginPage,
     SignupPage,
+    ProfilePage,
+    ArchivePage
   ],
   providers: [
     StatusBar,
@@ -49,6 +56,7 @@ import { AuthProvider } from '../providers/auth/auth';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MessageProvider,
     AuthProvider,
+    ProfileProvider,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
