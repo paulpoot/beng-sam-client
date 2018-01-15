@@ -42,14 +42,14 @@ page-profile {
             display: block;
             width: 80%;
             height: 8px;
-
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
+            background: color($colors, light);
+            border: none; //for firefox
+            color: #fff; //for ie
+            -webkit-appearance: none; //for webkit/blink
         }
 
-        progress[value]::-webkit-progress-bar {
-            background-color: color($colors, light);
+        progress::-moz-progress-bar {
+            background-color: color($colors, accent);
         }
 
         progress[value]::-webkit-progress-value {

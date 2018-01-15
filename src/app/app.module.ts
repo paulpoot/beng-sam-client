@@ -14,7 +14,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
-import { ArchivePage } from '../pages/archive/archive';
+import { HighlightsPage } from '../pages/highlights/highlights';
 import { AuthProvider } from '../providers/auth/auth';
 import { MessageProvider } from '../providers/message-provider/message-provider';
 import { ProfileProvider } from '../providers/profile-provider/profile-provider';
@@ -26,7 +26,7 @@ import { ProfileProvider } from '../providers/profile-provider/profile-provider'
     LoginPage,
     SignupPage,
     ProfilePage,
-    ArchivePage
+    HighlightsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +48,7 @@ import { ProfileProvider } from '../providers/profile-provider/profile-provider'
     LoginPage,
     SignupPage,
     ProfilePage,
-    ArchivePage
+    HighlightsPage
   ],
   providers: [
     StatusBar,

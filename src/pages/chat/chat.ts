@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { apiUrl } from "../../../secret";
 import { HttpClient } from "@angular/common/http";
 import { ProfilePage } from "../profile/profile";
+import { HighlightsPage } from "../highlights/highlights";
 
 /**
  * Generated class for the ChatPage page.
@@ -94,6 +95,10 @@ export class ChatPage {
 
     openProfile() {
         this.navCtrl.push(ProfilePage);    
+    }
+
+    openHighlights() {
+        this.navCtrl.push(HighlightsPage);
     }
 
     ionViewWillEnter() {

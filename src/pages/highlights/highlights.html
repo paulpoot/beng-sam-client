@@ -1,0 +1,57 @@
+<!--
+  Generated template for the HighlightsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Hoogtepunten</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="primary">
+    <ion-segment color="secondary" [(ngModel)]="archive">
+      <ion-segment-button value="chat">
+        Chat
+      </ion-segment-button>
+      <ion-segment-button value="visit">
+        Bezoek
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="options"></ion-icon>
+      </button>
+      <button ion-button icon-only>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content [ngSwitch]="archive" padding>
+  <ion-grid *ngSwitchCase="'chat'">
+      <ion-row *ngFor="let rows of chatData">
+        <ion-col *ngFor="let item of rows" col-4 class="highlight">
+          <img *ngIf="item.imgUrl" src="{{ item.imgUrl }}" />
+
+          <div *ngIf="item.type === 'link'" class="link">
+            <ion-icon name="link"></ion-icon>
+            <span>{{ item.url }}</span>
+          </div>
+
+          <div *ngIf="item.type === 'quote'" class="quote">
+            {{ item.text }}
+          </div>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <div *ngSwitchCase="'visit'" class="no-data">
+    <ion-icon name="film" color="primaryLighter"></ion-icon>
+    <h2>Hier komen alle highlights van je museumbezoek te staan!</h2>
+  </div>
+</ion-content>
