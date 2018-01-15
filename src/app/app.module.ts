@@ -18,6 +18,7 @@ import { HighlightsPage } from '../pages/highlights/highlights';
 import { AuthProvider } from '../providers/auth/auth';
 import { MessageProvider } from '../providers/message-provider/message-provider';
 import { ProfileProvider } from '../providers/profile-provider/profile-provider';
+import { SettingsPage } from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProfileProvider } from '../providers/profile-provider/profile-provider'
     LoginPage,
     SignupPage,
     ProfilePage,
-    HighlightsPage
+    HighlightsPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { ProfileProvider } from '../providers/profile-provider/profile-provider'
     LoginPage,
     SignupPage,
     ProfilePage,
-    HighlightsPage
+    HighlightsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,39 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Instellingen</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list no-lines>
+        <ion-list-header>
+            Meldingen
+        </ion-list-header>
+        <ion-item>
+            <ion-label>Nieuwe berichten</ion-label>
+            <ion-toggle color="accent" checked="true"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Aanbevelingen</ion-label>
+            <ion-toggle color="accent" checked="true"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Stuur berichten vanaf</ion-label>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="settings.fromTime"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>tot</ion-label>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"[(ngModel)]="settings.toTime"></ion-datetime>
+        </ion-item>
+    </ion-list>
+</ion-content>
+1

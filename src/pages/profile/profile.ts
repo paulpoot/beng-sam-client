@@ -4,7 +4,8 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { ProfileProvider } from '../../providers/profile-provider/profile-provider';
 import { finalize } from 'rxjs/operators';
 import { LoginPage } from '../login/login';
-
+import { MessageProvider } from '../../providers/message-provider/message-provider';
+import { SettingsPage } from '../settings/settings';
 
 /**
  * Generated class for the ProfilePage page.
@@ -17,14 +18,22 @@ import { LoginPage } from '../login/login';
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
-  providers: [ProfileProvider]
+  providers: [ProfileProvider, MessageProvider]
 })
 export class ProfilePage {
   public profile: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public profileProvider: ProfileProvider, public authProvider: AuthProvider, 
-    public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+    public profileProvider: ProfileProvider, public messageProvider: MessageProvider,
+    public authProvider: AuthProvider, public loadingCtrl: LoadingController, 
+    public toastCtrl: ToastController) {
+  }
+
+  requestHelp() {
+    this.messageProvider.submit('Kan je me uitleggen wat de levels op de profielpagina betekenen?')
+    .then((data) => {
+      this.navCtrl.pop();
+    });
   }
 
   saveProfile(profile) {
@@ -46,7 +55,11 @@ export class ProfilePage {
         });
   }
 
-  public showToast(message) {
+  openSettings() {
+    this.navCtrl.push(SettingsPage);
+  }
+
+  showToast(message) {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 3000,
@@ -56,7 +69,7 @@ export class ProfilePage {
     toast.present();
   }
 
-  public logout() {
+  logout() {
     this.authProvider.logout();
     this.navCtrl.push(LoginPage);
   }

@@ -10,6 +10,9 @@
     <ion-title>Profiel</ion-title>
 
     <ion-buttons end>
+      <button ion-button icon-only (click)="openSettings()">
+          <ion-icon name="settings"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="logout()">
           <ion-icon name="log-out"></ion-icon>
       </button>
@@ -38,7 +41,7 @@
       </ion-row>
     </ion-grid>
 
-    <span class="level">Level {{ profile.level }}</span>
+    <span class="level">Level {{ profile.level }} <ion-icon name="help-circle" color="primaryLighter" (click)="requestHelp()"></ion-icon></span>
     <progress max="1000" value="{{ profile.experienceForNextLevel }}"></progress>
 
   </div>
