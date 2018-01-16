@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ProfileProvider } from '../../providers/profile-provider/profile-provider';
 import { finalize } from 'rxjs/operators';
@@ -26,7 +26,7 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public profileProvider: ProfileProvider, public messageProvider: MessageProvider,
     public authProvider: AuthProvider, public loadingCtrl: LoadingController, 
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, public alertCtrl: AlertController) {
   }
 
   requestHelp() {
@@ -70,8 +70,22 @@ export class ProfilePage {
   }
 
   logout() {
-    this.authProvider.logout();
-    this.navCtrl.push(LoginPage);
+    let confirm = this.alertCtrl.create({
+      title: 'Uitloggen',
+      message: 'Weet je zeker dat je wil uitloggen?',
+      buttons: [
+        {text: 'Annuleren'},
+        {
+          text: 'Uitloggen',
+          handler: () => {
+            this.authProvider.logout();
+            this.navCtrl.push(LoginPage);
+          }
+        }
+      ]
+    });
+
+    confirm.present();
   }
 
   ionViewWillEnter() {

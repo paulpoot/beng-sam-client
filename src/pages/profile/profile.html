@@ -42,8 +42,9 @@
     </ion-grid>
 
     <span class="level">Level {{ profile.level }} <ion-icon name="help-circle" color="primaryLighter" (click)="requestHelp()"></ion-icon></span>
-    <progress max="1000" value="{{ profile.experienceForNextLevel }}"></progress>
-
+    <div class="progress-wrapper">
+        <progress max="1000" value="{{ profile.experienceForNextLevel }}"></progress>
+    </div>
   </div>
 
   <div class="form" padding>

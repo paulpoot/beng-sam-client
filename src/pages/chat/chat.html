@@ -12,7 +12,7 @@
 
         <ion-buttons end>
             <button ion-button icon-only (click)="openHighlights()">
-                <ion-icon name="archive"></ion-icon>
+                <ion-icon name="film"></ion-icon>
             </button>
             <button ion-button icon-only (click)="openProfile()">
                 <ion-icon name="contact"></ion-icon>
@@ -24,6 +24,11 @@
 
 
 <ion-content padding class="chat-background">
+    <div *ngIf="!messages" class="no-data">
+        <ion-icon name="chatboxes" color="primaryLighter"></ion-icon>
+        <h2>Er zijn nog geen berichten om weer te geven.</h2>
+    </div>
+
     <div *ngFor="let message of messages" class="chat-row chat-row--{{ message.user_id }}">
         <div class="chat-bubble" 
                 id="{{ message._id }}"
@@ -41,14 +46,16 @@
 <ion-footer>
     <form #form="ngForm" (ngSubmit)="submit(form.value); form.reset()" novalidate>   
         <ion-toolbar color="secondary" id="toolbar">
-          <ion-input class="message-input" type="text" name="message" placeholder="Typ bericht..." ngModel required #message="ngModel"
-              [class.invalid]="message.errors && message.dirty"></ion-input>
-
-          <ion-buttons end>
-              <button ion-button icon-only type="submit" class="send-button">
-                 <ion-icon name="send" color="primaryLighter"></ion-icon>
-              </button>
-          </ion-buttons>
+            <div class="input-wrapper" [ngClass]="{ 'animate': msgBarAnimation }">
+                <ion-input class="message-input" type="text" name="message" placeholder="Typ bericht..." ngModel required #message="ngModel"
+                    [class.invalid]="message.errors && message.dirty"></ion-input>
+    
+                <ion-buttons end>
+                    <button ion-button icon-only type="submit" class="send-button">
+                    <ion-icon name="send" color="primaryLighter"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </div>
         </ion-toolbar>
     </form>
 </ion-footer>

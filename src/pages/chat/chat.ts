@@ -24,10 +24,12 @@ export class ChatPage {
     @ViewChild(Content) content: any;
     public messages: any;
     public urlRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
+    public messageRegex = /(\S)/g;
     public message: string;
     public lastMessage: any;
     public isTyping: boolean = false;
     public firstLoad: boolean = true;
+    public msgBarAnimation: boolean = false;
 
     constructor(public platform: Platform,
             public navCtrl: NavController, 
@@ -80,17 +82,27 @@ export class ChatPage {
     }
 
     submit(values: any) {
-        this.messageProvider.submit(values.message)
-        .then(data => {
-            this.loadMessages();
-            this.message = null;
 
-            if(this.messages) {
-                this.messages.push({ content: values.message });
-            }
+        if(this.messageRegex.test(values.message) && values.message != null) {
+            document.body.focus();
+            this.msgBarAnimation = true;
 
-            this.scrollDown();
-        })
+            this.messageProvider.submit(values.message)
+            .then(data => {
+                this.loadMessages();
+                this.message = null;
+    
+                if(this.messages) {
+                    this.messages.push({ content: values.message });
+                }
+
+                Observable.timer(1500).subscribe(x => {
+                    this.msgBarAnimation = false;
+                });
+    
+                this.scrollDown();
+            })
+        }
     }
 
     openProfile() {

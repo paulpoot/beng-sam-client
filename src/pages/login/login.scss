@@ -1,3 +1,31 @@
 page-login {
+    .content {
+        display: flex;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
+    form .item-md {
+        padding-right: 16px;
+    }
+
+    ion-card {
+ 
+    }
+
+    .fadeInUp {
+        opacity: 1;
+        animation-name: fadeInUp;
+        animation-duration: .5s;
+    }
+
+    .fadeOutDown {
+        opacity: 0;
+        animation-name: fadeOutDown;
+        animation-duration: .5s;
+    }
 }

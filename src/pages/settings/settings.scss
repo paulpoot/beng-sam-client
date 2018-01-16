@@ -2,4 +2,30 @@ page-settings {
     ion-list-header {
         color: color($colors, accent) !important;
     }
+
+    .item-datetime {
+        &:nth-child(2) .label-md { 
+          padding-left: 16px;  
+        }
+        
+        .label-md {
+            color: color($colors, primary);
+        }
+    }
+
+    ion-datetime {
+        color: color($colors, accent) !important;
+    }
+
+    .datetime-text {
+        font-size: 1.6rem;
+    }
+
+    .datetime-grid {
+        padding: 0;
+
+        ion-row, ion-col {
+            padding: 0;
+        }
+    }
 }

@@ -17,6 +17,8 @@ page-profile {
             span {
                 font-weight: 700;
                 font-size: 2rem;
+                animation-name: fadeUp;
+                animation-duration: 2s;
             }
 
             h3 {
@@ -41,20 +43,34 @@ page-profile {
             }
         }
 
-        progress {
+        .progress-wrapper {
+            position: relative;
             margin: 1rem 10%;
             display: block;
             width: 80%;
             height: 8px;
             background: color($colors, light);
+        }
+
+        progress {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: color($colors, light);
             border: none; //for firefox
             color: #fff; //for ie
             -webkit-appearance: none; //for webkit/blink
+            animation-name: expandWidth;
+            animation-duration: 2s;
         }
 
         progress::-moz-progress-bar {
             background-color: color($colors, accent);
         }
+
+        progress::-webkit-progress-bar {  
+            background-color: color($colors, light);
+        }  
 
         progress[value]::-webkit-progress-value {
             background-color: color($colors, accent);
@@ -83,4 +99,19 @@ page-profile {
         }
     }
 
+    @keyframes expandWidth {
+        0% { width: 0; }
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY();
+        }
+    }
 }

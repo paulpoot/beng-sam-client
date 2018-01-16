@@ -91,4 +91,35 @@ page-chat {
         margin-right: 5vw !important;
         margin-left: 5vw !important;
     }
+
+    .input-wrapper {
+        display: flex;
+        padding-left: 5vw;
+
+        &.animate {
+            animation-name: slideRight;
+            animation-duration: 1s;
+        }
+    }
+
+    @keyframes slideRight {
+        0% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        50% {
+            opacity: 0;
+            transform: translateX(50vw);
+        }
+
+        51% {
+            transform: translateX(-50vw);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0vw);
+        }
+    }
 }

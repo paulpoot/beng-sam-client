@@ -27,12 +27,36 @@
             <ion-toggle color="accent" checked="true"></ion-toggle>
         </ion-item>
         <ion-item>
-            <ion-label>Stuur berichten vanaf</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="settings.fromTime"></ion-datetime>
+                <ion-label>Stuur berichten tussen</ion-label>
         </ion-item>
+        <ion-grid class="datetime-grid">
+            <ion-row>
+                <ion-col col-5><ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="settings.fromTime"></ion-datetime></ion-col>
+                <ion-col col-2><ion-label>en</ion-label></ion-col>
+                <ion-col col-5><ion-datetime displayFormat="H:mm" pickerFormat="H mm" [(ngModel)]="settings.toTime"></ion-datetime></ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-list-header>
+            Thema
+        </ion-list-header>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4><img src="assets/imgs/bg1.jpg" /></ion-col>
+                <ion-col col-4><img src="assets/imgs/bg2.jpg" /></ion-col>
+                <ion-col col-4><img src="assets/imgs/bg3.jpg" /></ion-col>
+            </ion-row>
+            <ion-row justify-content-center>
+                <ion-col col-6>
+                    <button ion-button color="primaryLighter" clear disabled>Geen achtergrond</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-list-header>
+            Privacy
+        </ion-list-header>
         <ion-item>
-            <ion-label>tot</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"[(ngModel)]="settings.toTime"></ion-datetime>
+            <ion-label>Deel locatie</ion-label>
+            <ion-toggle color="accent" checked="false"></ion-toggle>
         </ion-item>
     </ion-list>
 </ion-content>

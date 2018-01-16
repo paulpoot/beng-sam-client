@@ -4,14 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from "../pages/login/login";
 import { AuthProvider } from "../providers/auth/auth";
-
 import { ChatPage } from '../pages/chat/chat';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ChatPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, 
               statusBar: StatusBar, 

@@ -1,38 +1,63 @@
+<div class="content" padding style="background-image: url('assets/imgs/beeldengeluid.jpg')">
 
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Inloggen</ion-title>
-  </ion-navbar>
-</ion-header>
+  <ion-card #loginCard padding class="fadeInUp">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>E-mailadres</ion-label>
+          <ion-input type="text" name="email" ngModel required #email="ngModel"
+                      [class.invalid]="email.errors && email.dirty"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Wachtwoord</ion-label>
+          <ion-input type="password" name="password" ngModel required #password="ngModel"
+                      [class.invalid]="password.errors && password.dirty"></ion-input>
+        </ion-item>
+  
+        <div padding>
+          <button ion-button color="accent" block type="submit" [disabled]="!loginForm.valid">Inloggen</button>
+        </div>
+  
+        <button ion-button color="primary" type="button" clear (click)="showSignup()">Nog geen account?</button>
+      </ion-list>
+    </form>
+  </ion-card>
 
-<ion-content padding>
-  <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
-    <ion-list>
-      <ion-item>
-        <ion-label floating>E-mailadres</ion-label>
-        <ion-input type="text" name="email" ngModel required #email="ngModel"
-                   [class.invalid]="email.errors && email.dirty"></ion-input>
-      </ion-item>
-      <ion-item class="error-message" *ngIf="email.errors?.required && email.dirty">
-        E-mailadres is vereist
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>Wachtwoord</ion-label>
-        <ion-input type="password" name="password" ngModel required #password="ngModel"
-                   [class.invalid]="password.errors && password.dirty"></ion-input>
-      </ion-item>
-      <ion-item class="error-message" *ngIf="password.errors?.required && password.dirty">
-        Wachtwoord is vereist
-      </ion-item>
-
-      <div padding>
-        <button ion-button color="accent" block type="submit" [disabled]="!form.valid">Inloggen</button>
-      </div>
-
-      <div padding>
-        <button ion-button color="secondary" block type="button" (click)="signup()">Registreren</button>
-      </div>
-    </ion-list>
-  </form>
-</ion-content>
+  <ion-card #signupCard padding class="hidden">
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Naam</ion-label>
+          <ion-input type="text" name="name" ngModel required #name="ngModel"
+                      [class.invalid]="name.errors && name.dirty"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label floating>Leeftijd</ion-label>
+            <ion-input type="number" name="age" ngModel required #age="ngModel"
+                        [class.invalid]="age.errors && age.dirty"></ion-input>
+          </ion-item>
+  
+        <ion-item>
+          <ion-label floating>E-mailadres</ion-label>
+          <ion-input type="email" name="email" ngModel required email #email="ngModel"
+                    [class.invalid]="email.errors && email.dirty"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Wachtwoord</ion-label>
+          <ion-input type="password" name="password" ngModel required #password="ngModel"
+                    [class.invalid]="password.errors && password.dirty"></ion-input>
+        </ion-item>
+  
+        <div padding>
+          <button ion-button color="accent" block type="submit" [disabled]="!signupForm.valid">Registreren</button>
+        </div>
+  
+        <button ion-button color="primary" type="button" clear (click)="showLogin()">Heb je al een account?</button>
+      </ion-list>
+    </form>
+  </ion-card>
+  
+</div>
