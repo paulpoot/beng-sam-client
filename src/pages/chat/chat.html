@@ -43,10 +43,10 @@
 </ion-content>
 
 
-<ion-footer>
+<ion-footer [ngClass]="{ 'animate': msgBarAnimation }">
     <form #form="ngForm" (ngSubmit)="submit(form.value); form.reset()" novalidate>   
         <ion-toolbar color="secondary" id="toolbar">
-            <div class="input-wrapper" [ngClass]="{ 'animate': msgBarAnimation }">
+            <div class="input-wrapper">
                 <ion-input class="message-input" type="text" name="message" placeholder="Typ bericht..." ngModel required #message="ngModel"
                     [class.invalid]="message.errors && message.dirty"></ion-input>
     

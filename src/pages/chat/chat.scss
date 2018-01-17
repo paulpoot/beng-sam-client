@@ -95,31 +95,27 @@ page-chat {
     .input-wrapper {
         display: flex;
         padding-left: 5vw;
-
-        &.animate {
-            animation-name: slideRight;
-            animation-duration: 1s;
-        }
     }
 
-    @keyframes slideRight {
+    ion-footer.animate {
+        animation-name: slideOutDown;
+        animation-duration: 1s;
+    }
+
+    @keyframes slideOutDown {
         0% {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
         50% {
             opacity: 0;
-            transform: translateX(50vw);
-        }
-
-        51% {
-            transform: translateX(-50vw);
+            transform: translateY(50px);
         }
 
         100% {
             opacity: 1;
-            transform: translateX(0vw);
+            transform: translateY(0);
         }
     }
 }
